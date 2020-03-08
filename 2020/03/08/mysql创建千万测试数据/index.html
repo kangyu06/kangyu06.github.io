@@ -79,19 +79,16 @@
 
 
 
-<meta name="description" content="各位精神小伙，晚上好，今天和大家来交流一下设计模式中最简单的单列模式，听前辈们说，学了设计模式，从此便可以指点江山，笑傲江湖…我…信…了…吗😹">
+<meta name="description" content="各位精神小伙，晚上好啊，由于实际工作里，数据库量并不是很大，但自己还很想测试一下在千万数据的操作下， 对数据库进行压力测试，比如看看索引的惊人速度，以及in和exists 是否真的有那么大的区别等等。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式-单列">
-<meta property="og:url" content="http://yoursite.com/2020/03/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E5%88%97/">
+<meta property="og:title" content="mysql创建千万测试数据">
+<meta property="og:url" content="http://yoursite.com/2020/03/08/mysql%E5%88%9B%E5%BB%BA%E5%8D%83%E4%B8%87%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE/">
 <meta property="og:site_name" content="kangyu Personal notes">
-<meta property="og:description" content="各位精神小伙，晚上好，今天和大家来交流一下设计模式中最简单的单列模式，听前辈们说，学了设计模式，从此便可以指点江山，笑傲江湖…我…信…了…吗😹">
-<meta property="og:image" content="http://yoursite.com/2020/03/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E5%88%97/e.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/03/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E5%88%97/l.jpg">
-<meta property="article:published_time" content="2020-03-08T12:34:57.000Z">
-<meta property="article:modified_time" content="2020-03-08T12:55:41.415Z">
+<meta property="og:description" content="各位精神小伙，晚上好啊，由于实际工作里，数据库量并不是很大，但自己还很想测试一下在千万数据的操作下， 对数据库进行压力测试，比如看看索引的惊人速度，以及in和exists 是否真的有那么大的区别等等。">
+<meta property="article:published_time" content="2020-03-08T15:51:56.000Z">
+<meta property="article:modified_time" content="2020-03-08T16:04:11.545Z">
 <meta property="article:author" content="kangyu">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/03/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E5%88%97/e.jpg">
 
 
 
@@ -121,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/03/08/设计模式-单列/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/03/08/mysql创建千万测试数据/"/>
 
 
 
 
 
-  <title>设计模式-单列 | kangyu Personal notes</title>
+  <title>mysql创建千万测试数据 | kangyu Personal notes</title>
   
 
 
@@ -234,7 +231,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E5%88%97/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/08/mysql%E5%88%9B%E5%BB%BA%E5%8D%83%E4%B8%87%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kangyu">
@@ -251,7 +248,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式-单列</h1>
+          <h1 class="post-title" itemprop="name headline">mysql创建千万测试数据</h1>
         
 
         <div class="post-meta">
@@ -263,7 +260,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-08T20:34:57+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-08T23:51:56+08:00">
                 2020-03-08
               </time>
             
@@ -286,8 +283,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/DesignPatterng/" itemprop="url" rel="index">
-                    <span itemprop="name">DesignPatterng</span>
+                  <a href="/categories/Mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">Mysql</span>
                   </a>
                 </span>
 
@@ -323,34 +320,10 @@
       
 
       
-        <p>各位精神小伙，晚上好，今天和大家来交流一下设计模式中最简单的单列模式，听前辈们说，学了设计模式，从此便可以指点江山，笑傲江湖…我…信…了…吗😹</p>
+        <p>各位精神小伙，晚上好啊，由于实际工作里，数据库量并不是很大，但自己还很想测试一下在千万数据的操作下，</p>
+<p>对数据库进行压力测试，比如看看索引的惊人速度，以及in和exists 是否真的有那么大的区别等等。</p>
 <a id="more"></a>
-<h3 id="什么是设计模式">什么是设计模式</h3>
-<p>是对开发经验的总结，是解决问题的一系列套路，不是语法规定，是一套用来提高代码可重用性，可扩展性的一套解决方案，是由软件工程中的<strong>四人帮</strong>在漆黑的夜晚摸索出来的，真不容易🤏，致敬！</p>
-<h3 id="什么是单列模式">什么是单列模式</h3>
-<p>该类只有一个实例存在于jvm堆里，该实例必须由单列类自行创建，且单列类对外提供一个全局访问方法</p>
-<h3 id="实现方式">实现方式</h3>
-<ul>
-<li>
-<p>饿汉模式：类加载的时候，就初始化了，简单易用，线程安全。</p>
-<img src="/2020/03/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E5%88%97/e.jpg" class="" title="饿汉模式">
-</li>
-<li>
-<p>懒汉模式：需要调用该类的时候再加载，但是存在线程安全问题</p>
-<ul>
-<li>
-<p>方法加synchronized锁进行解决，不过效率有点低</p>
-</li>
-<li>
-<p>可以在内部加双重锁来进行解决。</p>
-</li>
-</ul>
-<img src="/2020/03/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E5%88%97/l.jpg" class="" title="懒汉模式">
-</li>
-</ul>
-<h3 id="结尾">结尾</h3>
-<p>下一篇来讲讲其他设计模式，如外观模式、适配器模式等等…🖖🖖🖖</p>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">-- 部门表</span><br><span class="line">create table dept(</span><br><span class="line">	id int unsigned primary key auto_increment,</span><br><span class="line">	deptno mediumint unsigned not null default 0,</span><br><span class="line">	dname varchar(20) not null default &quot;&quot;,</span><br><span class="line">	loc varchar(13) not null default &quot;&quot;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">-- 员工表</span><br><span class="line">create table emp(</span><br><span class="line">	id int unsigned primary key auto_increment,</span><br><span class="line">	empno mediumint unsigned not null default 0,</span><br><span class="line">	ename varchar(20) not null default &quot;&quot;,</span><br><span class="line">	job varchar(9) not null default &quot;&quot;,</span><br><span class="line">	mgr mediumint unsigned not null default 0,</span><br><span class="line">	hiredate date not null,</span><br><span class="line">	sal decimal(7,2) not null,</span><br><span class="line">	comn decimal(7,2) not null,</span><br><span class="line">	deptno mediumint unsigned not null default 0</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"># 随机产生字符串</span><br><span class="line">DELIMITER $$ </span><br><span class="line">CREATE FUNCTION rand_string(n INT) RETURNS VARCHAR(255)</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE chars_str VARCHAR(100) DEFAULT &#39;abcdefghijklmlopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;;</span><br><span class="line">	DECLARE return_str VARCHAR(255) DEFAULT &#39;&#39;;</span><br><span class="line">	DECLARE i INT DEFAULT 0;</span><br><span class="line">	WHILE i &lt; n DO</span><br><span class="line">	SET return_str &#x3D; CONCAT(return_str,SUBSTRING(chars_str,FLOOR(1+RAND()*52),1));</span><br><span class="line">	SET i &#x3D; i+1;</span><br><span class="line">	END WHILE;</span><br><span class="line">	RETURN return_str;</span><br><span class="line">END $$</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 随机产生部门编号</span><br><span class="line">DELIMITER $$ </span><br><span class="line">CREATE FUNCTION rand_num() RETURNS INT(5)</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE i INT DEFAULT 0;</span><br><span class="line">	SET i &#x3D; FLOOR(100+RAND()*10);</span><br><span class="line">	RETURN i;</span><br><span class="line">END $$</span><br><span class="line"></span><br><span class="line"># 创建往emp表中插入数据的存储过程</span><br><span class="line">DELIMITER $$</span><br><span class="line">CREATE PROCEDURE insert_emp(IN START INT(10),IN max_num INT(10))</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE i INT DEFAULT 0;</span><br><span class="line">	# set autocommit &#x3D;0 把autocommit设置成0，把默认提交关闭</span><br><span class="line">	SET autocommit &#x3D; 0;</span><br><span class="line">	REPEAT</span><br><span class="line">	SET i &#x3D; i + 1;</span><br><span class="line">	INSERT INTO emp(empno,ename,job,mgr,hiredate,sal,comn,deptno) VALUES ((START+I),rand_string(6),&#39;SALEMAN&#39;,0001,now(),2000,400,rand_num());</span><br><span class="line">	UNTIL i &#x3D; max_num</span><br><span class="line">	END REPEAT;</span><br><span class="line">	COMMIT;</span><br><span class="line">END $$</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 测试while循环</span><br><span class="line">DELIMITER $$</span><br><span class="line">CREATE PROCEDURE test(IN START INT(10))</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE i INT DEFAULT 0;</span><br><span class="line">	# set autocommit &#x3D;0 把autocommit设置成0，把默认提交关闭</span><br><span class="line">	WHILE i &lt; START do</span><br><span class="line">	set i &#x3D; i + 1;</span><br><span class="line">	end WHILE;</span><br><span class="line">	SELECT i;</span><br><span class="line">END $$</span><br><span class="line">CALL test(10);</span><br><span class="line"></span><br><span class="line">SELECT count(*) FROM emp e ORDER BY e.id desc;</span><br><span class="line"></span><br><span class="line">-- 插入400w数据,下标从200w开始</span><br><span class="line">call insert_emp(2000000,6000000);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># dept插入数据的存储过程</span><br><span class="line">DELIMITER $$</span><br><span class="line">CREATE PROCEDURE insert_dept(IN START INT(10),IN max_num INT(10))</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE i INT DEFAULT 0;</span><br><span class="line">	SET autocommit &#x3D; 0;</span><br><span class="line">	REPEAT</span><br><span class="line">	SET i &#x3D; i+1;</span><br><span class="line">	INSERT  INTO dept( deptno,dname,loc) VALUES((START+i),rand_string(10),rand_string(8));</span><br><span class="line">	UNTIL i &#x3D; max_num</span><br><span class="line">	END REPEAT;</span><br><span class="line">	COMMIT;</span><br><span class="line">END $$</span><br><span class="line">-- 插入1000w数据,下标从1开始</span><br><span class="line">call insert_dept(1,10000000);</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -374,8 +347,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/08/Mysql-%E9%94%81/" rel="next" title="Mysql基础-锁">
-                <i class="fa fa-chevron-left"></i> Mysql基础-锁
+              <a href="/2020/03/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E5%88%97/" rel="next" title="设计模式-单列">
+                <i class="fa fa-chevron-left"></i> 设计模式-单列
               </a>
             
           </div>
@@ -384,8 +357,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/03/08/mysql%E5%88%9B%E5%BB%BA%E5%8D%83%E4%B8%87%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE/" rel="prev" title="mysql创建千万测试数据">
-                mysql创建千万测试数据 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/03/09/%E7%AE%97%E6%B3%95-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B3%95/" rel="prev" title="算法-二分查找法">
+                算法-二分查找法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -438,17 +411,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -537,22 +501,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是设计模式"><span class="nav-number">1.</span> <span class="nav-text">什么是设计模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是单列模式"><span class="nav-number">2.</span> <span class="nav-text">什么是单列模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现方式"><span class="nav-number">3.</span> <span class="nav-text">实现方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结尾"><span class="nav-number">4.</span> <span class="nav-text">结尾</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

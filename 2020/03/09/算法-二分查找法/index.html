@@ -79,19 +79,16 @@
 
 
 
-<meta name="description" content="各位精神小伙，晚上好，今天和大家来交流一下设计模式中最简单的单列模式，听前辈们说，学了设计模式，从此便可以指点江山，笑傲江湖…我…信…了…吗😹">
+<meta name="description" content="各位精神小伙，晚上好，今天来记录一下，针对有序数据集合的查找算法之二分查找（Binary Search） 😊😊😊">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式-单列">
-<meta property="og:url" content="http://yoursite.com/2020/03/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E5%88%97/">
+<meta property="og:title" content="算法-二分查找法">
+<meta property="og:url" content="http://yoursite.com/2020/03/09/%E7%AE%97%E6%B3%95-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B3%95/">
 <meta property="og:site_name" content="kangyu Personal notes">
-<meta property="og:description" content="各位精神小伙，晚上好，今天和大家来交流一下设计模式中最简单的单列模式，听前辈们说，学了设计模式，从此便可以指点江山，笑傲江湖…我…信…了…吗😹">
-<meta property="og:image" content="http://yoursite.com/2020/03/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E5%88%97/e.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/03/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E5%88%97/l.jpg">
-<meta property="article:published_time" content="2020-03-08T12:34:57.000Z">
-<meta property="article:modified_time" content="2020-03-08T12:55:41.415Z">
+<meta property="og:description" content="各位精神小伙，晚上好，今天来记录一下，针对有序数据集合的查找算法之二分查找（Binary Search） 😊😊😊">
+<meta property="article:published_time" content="2020-03-08T16:06:53.000Z">
+<meta property="article:modified_time" content="2020-03-08T16:40:18.951Z">
 <meta property="article:author" content="kangyu">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/03/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E5%88%97/e.jpg">
 
 
 
@@ -121,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/03/08/设计模式-单列/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/03/09/算法-二分查找法/"/>
 
 
 
 
 
-  <title>设计模式-单列 | kangyu Personal notes</title>
+  <title>算法-二分查找法 | kangyu Personal notes</title>
   
 
 
@@ -234,7 +231,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E5%88%97/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/09/%E7%AE%97%E6%B3%95-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kangyu">
@@ -251,7 +248,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式-单列</h1>
+          <h1 class="post-title" itemprop="name headline">算法-二分查找法</h1>
         
 
         <div class="post-meta">
@@ -263,8 +260,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-08T20:34:57+08:00">
-                2020-03-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-09T00:06:53+08:00">
+                2020-03-09
               </time>
             
 
@@ -286,8 +283,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/DesignPatterng/" itemprop="url" rel="index">
-                    <span itemprop="name">DesignPatterng</span>
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
                   </a>
                 </span>
 
@@ -323,33 +320,29 @@
       
 
       
-        <p>各位精神小伙，晚上好，今天和大家来交流一下设计模式中最简单的单列模式，听前辈们说，学了设计模式，从此便可以指点江山，笑傲江湖…我…信…了…吗😹</p>
+        <p>各位精神小伙，晚上好，今天来记录一下，针对有序数据集合的查找算法之二分查找（Binary Search） 😊😊😊</p>
 <a id="more"></a>
-<h3 id="什么是设计模式">什么是设计模式</h3>
-<p>是对开发经验的总结，是解决问题的一系列套路，不是语法规定，是一套用来提高代码可重用性，可扩展性的一套解决方案，是由软件工程中的<strong>四人帮</strong>在漆黑的夜晚摸索出来的，真不容易🤏，致敬！</p>
-<h3 id="什么是单列模式">什么是单列模式</h3>
-<p>该类只有一个实例存在于jvm堆里，该实例必须由单列类自行创建，且单列类对外提供一个全局访问方法</p>
-<h3 id="实现方式">实现方式</h3>
+<h3 id="什么是二分查找算法">什么是二分查找算法</h3>
+<p>二分查找法也叫折半查找法，每次折半进行查找，具有一定的局限性，依赖于<strong>顺序表结构以及数组</strong>，也就是说数据要是有序的，且每次都要通过下标来随机访问数据，时间复杂度为O(log2^n)。</p>
+<h3 id="看看代码">看看代码</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 递归的实现</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binarysearch</span><span class="params">(<span class="keyword">int</span> array[], <span class="keyword">int</span> low, <span class="keyword">int</span> high, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (low &gt; high) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (array[mid] &gt; target)</span><br><span class="line">        <span class="keyword">return</span> binarysearch(array, low, mid - <span class="number">1</span>, target);</span><br><span class="line">    <span class="keyword">if</span> (array[mid] &lt; target)</span><br><span class="line">        <span class="keyword">return</span> binarysearch(array, mid + <span class="number">1</span>, high, target);</span><br><span class="line">    <span class="keyword">return</span> mid;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 非递归的实现</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bsearchWithoutRecursion</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> high = a.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (a[mid] &gt; key)</span><br><span class="line">            high = mid - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (a[mid] &lt; key)</span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="容易出错的地方">容易出错的地方</h3>
 <ul>
 <li>
-<p>饿汉模式：类加载的时候，就初始化了，简单易用，线程安全。</p>
-<img src="/2020/03/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E5%88%97/e.jpg" class="" title="饿汉模式">
+<p>循环退出条件</p>
 </li>
 <li>
-<p>懒汉模式：需要调用该类的时候再加载，但是存在线程安全问题</p>
+<p>mid的取值</p>
+</li>
+<li>
+<p>low和high的更新。</p>
+</li>
+</ul>
+<h3 id="使用场景">使用场景</h3>
 <ul>
-<li>
-<p>方法加synchronized锁进行解决，不过效率有点低</p>
-</li>
-<li>
-<p>可以在内部加双重锁来进行解决。</p>
-</li>
+<li>静态数据，没有频繁的删除、添加操作</li>
+<li>数据量不能太大，因为数组要求的是连续的内存空间</li>
 </ul>
-<img src="/2020/03/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E5%88%97/l.jpg" class="" title="懒汉模式">
-</li>
-</ul>
-<h3 id="结尾">结尾</h3>
-<p>下一篇来讲讲其他设计模式，如外观模式、适配器模式等等…🖖🖖🖖</p>
 
       
     </div>
@@ -374,8 +367,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/08/Mysql-%E9%94%81/" rel="next" title="Mysql基础-锁">
-                <i class="fa fa-chevron-left"></i> Mysql基础-锁
+              <a href="/2020/03/08/mysql%E5%88%9B%E5%BB%BA%E5%8D%83%E4%B8%87%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE/" rel="next" title="mysql创建千万测试数据">
+                <i class="fa fa-chevron-left"></i> mysql创建千万测试数据
               </a>
             
           </div>
@@ -384,8 +377,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/03/08/mysql%E5%88%9B%E5%BB%BA%E5%8D%83%E4%B8%87%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE/" rel="prev" title="mysql创建千万测试数据">
-                mysql创建千万测试数据 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/03/09/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E3%80%81%E5%B8%8C%E5%B0%94/" rel="prev" title="排序算法-冒泡、选择、插入、希尔">
+                排序算法-冒泡、选择、插入、希尔 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -547,7 +540,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是设计模式"><span class="nav-number">1.</span> <span class="nav-text">什么是设计模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是单列模式"><span class="nav-number">2.</span> <span class="nav-text">什么是单列模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现方式"><span class="nav-number">3.</span> <span class="nav-text">实现方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结尾"><span class="nav-number">4.</span> <span class="nav-text">结尾</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是二分查找算法"><span class="nav-number">1.</span> <span class="nav-text">什么是二分查找算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#看看代码"><span class="nav-number">2.</span> <span class="nav-text">看看代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容易出错的地方"><span class="nav-number">3.</span> <span class="nav-text">容易出错的地方</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景"><span class="nav-number">4.</span> <span class="nav-text">使用场景</span></a></li></ol></div>
             
 
           </div>
