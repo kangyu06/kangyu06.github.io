@@ -88,7 +88,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/08/Mysql-%E9%94%81/s%E9%94%81.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/03/08/Mysql-%E9%94%81/x%E9%94%81.jpg">
 <meta property="article:published_time" content="2020-03-08T09:41:59.000Z">
-<meta property="article:modified_time" content="2020-03-08T12:24:12.335Z">
+<meta property="article:modified_time" content="2020-03-08T12:29:54.558Z">
 <meta property="article:author" content="kangyu">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/03/08/Mysql-%E9%94%81/s%E9%94%81.jpg">
@@ -373,10 +373,10 @@
 </li>
 <li>
 <p>表锁：</p>
-<p>在Innodb引擎中既支持行锁也支持表锁，那么什么时候会锁住整张表，什么时候只锁住一行呢？</p>
+<p>在Innodb引擎中既支持行锁也支持表锁，那么什么时候会锁住整张表？</p>
 <ul>
 <li><strong>只有通过索引条件检索数据，InnoDB才使用行级锁，否则，InnoDB将使用表锁！</strong></li>
-<li><strong>隔离级别为串行化</strong></li>
+<li><strong>隔离级别为串行化，锁住整个表</strong></li>
 </ul>
 </li>
 </ul>
